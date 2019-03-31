@@ -3303,6 +3303,9 @@ fieldset[disabled] .input-group-btn .btn-default.active {
   margin-left: 8px;
   vertical-align: middle;
   content: "";
+  border-top: 8px solid;
+  
+  border-bottom: 0;
   transition: border-color .25s, color .25s;
 }
 
