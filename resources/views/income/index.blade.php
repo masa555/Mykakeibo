@@ -50,9 +50,9 @@
     <h4>収入金額一覧表</h4>
     <tr>
    <table class="table table-striped table-bordered table-responsive">
-         <th>品目<span class="glyphicon glyphicon-sort pull-right" onclick="nowalart('title')" aria-hidden="true">降順</span></th>
-         <th>金額<span class="glyphicon glyphicon-sort pull-right" onclick="nowalart('price')" aria-hidden="true">降順</span></th>
-         <th>日時<span class="glyphicon glyphicon-sort pull-right" onclick="nowalart('purchased_at')" aria-hidden="true">降順</span></th>
+         <th>品目<span onclick="nowalart('title')" aria-hidden="true"><i class="fas fa-sort fa-lg"></i>降順</span></th>
+         <th>金額<span onclick="nowalart('price')" aria-hidden="true"><i class="fas fa-sort fa-lg"></i>降順</span></th>
+         <th>日時<span onclick="nowalart('purchased_at')" aria-hidden="true"><i class="fas fa-sort fa-lg"></i>降順</span></th>
          <th>編集</th>
          <th>削除</th>
     </tr>

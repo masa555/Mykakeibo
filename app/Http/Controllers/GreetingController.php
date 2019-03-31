@@ -39,13 +39,14 @@ class GreetingController extends Controller
           $kakeibo= new kakeibo();
           $kakeibo->title=$title;
           //user_idを取得
-          $kakeibo->user_id=$user_id;
-          $kakeibo->price=$price;
-          $kakeibo->detail=$detail;
-          $kakeibo->needs=$needs;
-          $kakeibo->purchased_at = $purchased_at;
-          $kakeibo->created_at = Carbon::now();
-          $kakeibo->save();
+             $kakeibo->user_id = $user_id;
+             $kakeibo->price = $price;
+             $kakeibo->detail = $detail;
+             $kakeibo->needs = $needs;
+             $kakeibo->purchased_at = $purchased_at;
+             $kakeibo->created_at = Carbon::now();
+             
+             $kakeibo->save();
           
           //収支を取得する
           $bop=$this->blaceOfPayment($user_id);
@@ -78,30 +79,27 @@ class GreetingController extends Controller
     }
     
     //無駄遣い
-    public function calUseless($user_id,$month,$year)
-    {
-        $need_outcome=0;
-        $need_outcome_count=0;
-        $not_need_outcome=0;
-        $not_need_count=0;
-        $start=Carbon::create($year,$month,1,00,00,00);
-        $end=Carbon::create($year,$month,31,23,59,59);
-        $total_outcomes=kakeibo::where('user_id',$user_id)->get();
-        foreach($total_outcomes as $outcome)
-        {
-            if(Carbon::parse($outcome->purchased_at)>=$start && Carbon::parse($outcome->purchased_at)<=$end)
-            {
-                if($outcome->needs ==1){
-                    $need_outcome+=$outcome->price;
-                    $need_outcome_count +=1;
+    public function calUseless($user_id,$month,$year){
+        $need_outcome = 0;
+        $need_outcome_count = 0;
+        $not_need_outcome = 0;
+        $not_need_outcome_count = 0;
+        $start = Carbon::create($year, $month, 1,00,00,00);
+        $end = Carbon::create($year, $month, 31,23,59,59);
+        $total_outcomes = kakeibo::where('user_id', $user_id)->get();
+        foreach ($total_outcomes as $outcome) {
+            if(Carbon::parse($outcome->purchased_at) >= $start && Carbon::parse($outcome->purchased_at) <= $end){
+                if($outcome->needs == 1){
+                    $need_outcome += $outcome->price;
+                    $need_outcome_count += 1;
                 }else{
-                    $not_need_outcome +=$outcome->price;
-                    $not_need_count_count +=1;
+                    $not_need_outcome += $outcome->price;
+                    $not_need_outcome_count += 1;
                 }
             }
         }
-        if($need_outcome+$not_need_outcome!=0){
-            $parsent =round(($not_need_outcome / ($need_outcome+$not_need_outcome))*100,1);
+        if($need_outcome+$not_need_outcome != 0){
+            $parsent = round(($not_need_outcome / ($need_outcome+$not_need_outcome)) * 100,1);
             return ['need_outcome' => $need_outcome,
                 'need_outcome_count'=>$need_outcome_count,
                 'not_need_outcome'=>$not_need_outcome,
@@ -109,13 +107,12 @@ class GreetingController extends Controller
                 'parsent'=>$parsent
             ];
         }else{
-            return[
-                'need_outcome'=>0,
+            return ['need_outcome' => 0,
                 'need_outcome_count'=>0,
                 'not_need_outcome'=>0,
                 'not_need_outcome_count'=>0,
                 'parsent'=>0
-                ];
+            ];
         }
     }
      public function getIncome($user_id){

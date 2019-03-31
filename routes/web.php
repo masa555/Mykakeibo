@@ -15,6 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/list', 'ListController@Index')->middleware('auth');
 Route::get('/','GreetingController@getIndex')->middleware('auth');
 Route::post('/', 'GreetingController@postIndex')->middleware('auth');
 Route::get('/income','IncomeController@index')->middleware('auth');
