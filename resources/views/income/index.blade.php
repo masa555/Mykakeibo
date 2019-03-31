@@ -7,7 +7,7 @@
           {{$message}}
     </div>
     <div class="col-md-offset-3 col-md-2">
-        <a href="/"class="btn btn-lg btn-primary btn-block" type="button">TOP画面に戻る</a>
+        <a href="/"class="btn btn-lg btn-success btn-block" type="button">TOP画面に戻る</a>
     </div>
 </div>
 
