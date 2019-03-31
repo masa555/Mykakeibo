@@ -58,7 +58,7 @@ class GreetingController extends Controller
           
     }
     
-    //一週間分の支出
+    //一週間分の出費
     public function outOneweak($user_id,$days,$month,$year)
     {
         $week_outcome=array();
@@ -78,7 +78,7 @@ class GreetingController extends Controller
         return $week_outcome;
     }
     
-    //無駄遣い
+    //無駄な出費
     public function calUseless($user_id,$month,$year){
         $need_outcome = 0;
         $need_outcome_count = 0;
@@ -165,7 +165,7 @@ class GreetingController extends Controller
     {
         //今月の収入を取得
         $bop['income']=$this->getIncome($user_id);
-        //今月の支出を取得
+        //今月の出費を取得
         $bop['outcome']=$this->getOutcome($user_id,'total');
         //今月の残りの残高
         if($bop['income']===0){
