@@ -8,6 +8,7 @@
         {{$message}}
     </div>
     <div class="col-md-offset-1 col-md-2">
+            @include('errors.error')
         <a href="/list" class="btn btn-lg btn-success btn-block" type="button">自分の家計簿を見てみる</a>
     </div>
     <div class="col-md-2">
@@ -28,7 +29,7 @@
      <form class="form-signin" role="form" method="post" action="">
          <div class="form-group">
              <h4>入力シート</h4>
-             <input type="hidden" name="_token" value="{{csrf_token()}}">
+             <input type="hidden" name="_token" value="{{csrf_token()}}" value="{{old('title')}}">
              <div class="form-inline" style="margin-top:10px">
                  <label for="tag_name">品目:</label>
                  <select style="width:170px" class="form-control form-margin" 
@@ -44,21 +45,21 @@
              <div class="form-inline">
                  <label for="tag_prce">金額:</label>
                  <input type="text" name="price" id="tag_price" 
-                 class="form-control form-margin" data-format="$1円"　pattern="^[1-9][0-9]*$" placeholder="金額を入力"required>円
+                 class="form-control form-margin" data-format="$1円"　pattern="^[1-9][0-9]*$" value="{{old('price')}}" placeholder="金額を入力"required>円
              </div>
               <div class="form-inline">
                  <label for="tag_days">日付:</label>
                  <input type="date" name="purchased_at" id="tag_days" 
-                 class="form-control form-margin"　value="@php echo date('Y-m-d'); @endphp"required>
+                 class="form-control form-margin"　value="@php echo date('Y-m-d'); @endphp"required value="{{old('date')}}">
              </div>
              <div class="form-inline">
                  <label for="tag_name">メモ:</label>
-                   <input type="text" name="detail" id="tag_detail" 
+                   <input type="text" name="detail" id="tag_detail" value="{{old('detail')}}" 
                    class="form-control form-margin" placeholder="備考">
              </div>
              <div class="form-inline">
           　<label for="tag_name">必要:</label>
-          　<input type="checkbox" name="needs" id="tag_needs" value="1" class="form-control form-margin">
+          　<input type="checkbox" name="needs" id="tag_needs" value="1" class="form-control form-margin" value="{{old('needs')}}">
             <button class="btn btn-primary" style="margin-left:100px;" type="submit">送信</button>
              </div>
          </div>

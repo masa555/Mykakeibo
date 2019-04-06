@@ -24,7 +24,13 @@ class CreatekakeiboRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'price'=>'required|numeric',
         ];
+    }
+    public function messages()
+    {
+        return [
+            'price'=>'金額は整数で入力してください。',
+            ];
     }
 }
