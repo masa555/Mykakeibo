@@ -15,6 +15,7 @@
     <div class="form-group text-center">
         {{-- CSRF対策 --}}
         <input type="hidden" name="_token" value="{{csrf_token()}}">
+            @include('errors.error')
         <input type="hidden" name="id" value="{{ $data->id }}">
         <div class="form-inline form-margin" style="margin-top: 10px">
             <label for="tag_name">種類　　：</label>

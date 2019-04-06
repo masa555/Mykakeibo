@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class IncomeRequest extends FormRequest
+class ListRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -21,17 +21,22 @@ class IncomeRequest extends FormRequest
      *
      * @return array
      */
+     
+    public function attributes()
+   {
+    return [
+        'price' => '価格',
+    ];
+   } 
     public function rules()
     {
         return [
-            'price'=>'required|numeric',
+           'price'=>'required|numeric',
         ];
     }
     public function messages()
     {
         return [
-            
-            'title'=>'品目を入力してください。',
             'price'=>'金額は整数で入力してください。',
             ];
     }
